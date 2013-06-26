@@ -13,6 +13,7 @@ class openssl::packages {
     }
 
     exec { 'update-ca-certificates':
+      path        => ['/usr/bin', '/usr/sbin', '/usr/local/bin'],
       refreshonly => true,
       require     => Package['ca-certificates'],
     }
