@@ -104,7 +104,10 @@ define openssl::certificate::x509(
     days        => $days,
     password    => $password,
     force       => $force,
-    require     => File["${base_dir}/${name}.cnf"],
+    require     => [
+      Ssl_pkey["${base_dir}/${name}.key"],
+      File["${base_dir}/${name}.cnf"],
+    ],
   }
 
   x509_request { "${base_dir}/${name}.csr":
@@ -113,7 +116,10 @@ define openssl::certificate::x509(
     private_key => "${base_dir}/${name}.key",
     password    => $password,
     force       => $force,
-    require     => File["${base_dir}/${name}.cnf"],
+    require     => [
+      Ssl_pkey["${base_dir}/${name}.key"],
+      File["${base_dir}/${name}.cnf"],
+    ],
   }
 
   # Set owner of all files
