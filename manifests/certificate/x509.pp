@@ -60,7 +60,7 @@ define openssl::certificate::x509(
   $group = 'root',
   $password = undef,
   $force = true,
-  $cnf_tpl = 'openssl/cert.cnf.erb',
+  $cnf_tpl = 'openssl/cert.cnf.erb'
   ) {
 
   validate_string($name)
