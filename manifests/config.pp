@@ -6,7 +6,6 @@ class openssl::config {
   include ::openssl::params
 
   file { 'ca-certificates.crt':
-    source => "puppet:///modules/core/etc/ssl/certs/ca-certificates.crt",
     ensure => 'present',
     owner  => 'root',
     mode   => '0644',
